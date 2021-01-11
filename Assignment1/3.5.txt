@@ -1,0 +1,6 @@
+1) this function seems to multiply the two inputs together by halfing one till it reaches one and doubling the other till it reaches the correct value. Interestingly, due to the flooring that c++ does when dividing an odd int in half, this works accurately all the time.
+
+2) it would ouutput the integer "1". This is because defining the name 'o' to being 1, it replaces all calls to 'o' with the integer 1, so this does not conflict with the return type of the function main.
+
+3) This function seems to compute the sum of the descending 1/n^2 series. However, it also flips the negative sign every run through. This means that if N is odd, the series will be 1/1 - 1/2^2 + 1/3^2 - 1/4^2 ..... (-1^N)1/n^2
+
