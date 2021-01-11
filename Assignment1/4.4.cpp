@@ -13,7 +13,7 @@ int main()
     }
 
     cout << "The factorial of " << number << " is ";
-    int accumulator = 1;
+    long accumulator = 1;
     for(; number > 0; accumulator *= number--);
     cout << accumulator << endl;
 
