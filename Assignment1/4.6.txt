@@ -1,0 +1,2 @@
+We obviously need to consider the fact that the user might enter a char. In this case, we reject the input.
+There is also the choice to use a very large int class to store the factorial so we can calculate the factorial of numbers bigger than 20.
