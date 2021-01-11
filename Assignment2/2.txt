@@ -1,0 +1,8 @@
+// 2 A simple function
+
+//line 09, f(1) will print out 2;
+//line 10, f(a) will print out 123*2 = 246;
+//line 12, f(b) will print out 6;
+//line 14, f(a) will print out 4;
+//line 15, f() will print out 10;
+
