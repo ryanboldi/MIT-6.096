@@ -36,3 +36,20 @@
 //    std::cout << sum(1,2,3);
 //    return 0;
 //}
+
+
+//3.6: I am getting an invalid conversion from int* to int error.
+//     To solve this issue, i just ensured that yPtr is defined as a pointer from the beginning by changing it to *yPtr.
+
+#include <iostream>
+const int ARRAY_LEN = 10;
+
+int main(){
+    int arr[ARRAY_LEN] = {10}; // all other elements will be implicitly created?
+
+    //std::cout << *arr;
+    int *xPtr = arr, *yPtr = arr + ARRAY_LEN - 1;
+
+    std::cout << *xPtr << " " << *yPtr; // should output 10 0
+    return 0;
+}
