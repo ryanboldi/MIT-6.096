@@ -10,14 +10,29 @@
 //      Which is better: 1 is much better as I do not want many global variables cluttering up my namespace.
 
 // 3.3: The issue here is that the doubleNumber function is not changing the actual variable that is called num, but instead changing a local copy of it that the function has created.
-//      1: to solve this, I will pass the number by reference instead.
+//      To solve this, I will pass the number by reference instead.
 
-#include <iostream>
-void doubleNumber (int *num) {*num = *num * 2;}
+//#include <iostream>
+//void doubleNumber (int *num) {*num = *num * 2;}
 
-int main() {
-    int num = 35;
-    doubleNumber(&num);
-    std::cout << num;
-    return 0;
-}
+//int main() {
+//    int num = 35;
+//    doubleNumber(&num);
+//    std::cout << num;
+//    return 0;
+//}
+
+// 3.4: this seems to work exactly as intended without changing anything. 1213 is being printed even though nothing is being returned from the function.
+//      I am guessing there is some niceness that my compiler is doing to automatically return any created ints as the function has an int return type.
+
+// 3.5: too many arguments to function because we are passing 3 to it, yet we only define x and y.
+//      To solve this, i would simply increase the amount of arguments to the sum function from 2 to 3. Maybe include a const int z.
+
+//int sum(const int x, const int y, const int z){
+//    return x+y+z;
+//}
+
+//int main() {
+//    std::cout << sum(1,2,3);
+//    return 0;
+//}
