@@ -46,7 +46,7 @@ void reverseArrayPointer(int arr[], const int length){
     int temp[length];
 
     for (int i = 0; i < length; i++){
-        temp[i] = arr[i];
+        *(temp + i) = *(arr + i);
     }
 
     for (int i = 0; i < length; i++){
