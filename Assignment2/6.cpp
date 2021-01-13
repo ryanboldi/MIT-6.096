@@ -14,7 +14,7 @@ void printArray(const int arr[], const int length){
     cout << arr[length - 1] << endl;
 }
 
-// 6.2 (and 6.5)
+// 6.2
 void reverseArray(int arr[], const int length){
     int temp[length];
 
@@ -23,8 +23,7 @@ void reverseArray(int arr[], const int length){
     }
 
     for (int i = 0; i < length; i++){
-        //arr[i] = temp[length - i - 1];
-        *(arr + i) = *(temp + length - 1 - i);
+        arr[i] = temp[length - i - 1];
     }
 }
 
@@ -40,7 +39,21 @@ void transposeArray(const int input[][LENGTH], int output[][WIDTH]){
 // 6.4
 // if we return the pointer to an array that we declared in a function,
 // that pointer will not point to anything anymore as the memory
-// declared in a function will be deallocated after the function ends.
+// declared in a function will be deallocated after the function ends
+
+//6.5
+void reverseArrayPointer(int arr[], const int length){
+    int temp[length];
+
+    for (int i = 0; i < length; i++){
+        temp[i] = arr[i];
+    }
+
+    for (int i = 0; i < length; i++){
+        //arr[i] = temp[length - i - 1];
+        *(arr + i) = *(temp + length - 1 - i);
+    }
+}
 
 int main(void){
     int arr[4] = {1,2,3,4};
