@@ -8,18 +8,22 @@ using namespace std;
 string pigLatinify(string input);
 
 int main(){
-    pigLatinify("ryan");
+    cout << pigLatinify("hello");
 
     return 0;
 }
 
 string pigLatinify(string input){
     string VOWELS = "aeiouy";
+    string output;
 
-    cout << (VOWELS.find(input.substr(0,1)) <= 5);
-    //if(VOWELS.find(input.substr(0,1))){
-    //   cout << "STARTS WITH VOWEL";
-    //}
-
-    return input;
+    if (VOWELS.find(input.substr(0,1)) <= 5) {
+        //STARTS WITH A VOWEL
+        output = input + "-way";
+    } else if (input.find("qu") == 0){
+        output = input.substr(2,string::npos) + "-quay";
+    } else {
+        output = input.substr(1,string::npos) + "-" + input.substr(0,1) + "ay";
+    }
+    return output;
 }
