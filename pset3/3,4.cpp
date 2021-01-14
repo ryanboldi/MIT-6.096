@@ -8,9 +8,48 @@ using namespace std;
 void printAttributes(Polygon *poly);
 
 int main(){
-    const Point *bl = new Point(1,2);
-    const Point *tr = new Point(2,4);
-    const PointArray *pa = new PointArray();
+   //5.7 also
+
+    int llx, lly, urx, ury;
+
+    cout << "Please enter the lower-left and upper-right coordinates for a rectangle." << endl;
+    cout << "lower-left x: ";
+    cin >> llx;
+    cout << "lower-left y: ";
+    cin >> lly;
+    cout << "upper-right x: ";
+    cin >> urx;
+    cout << "upper-right y: ";
+    cin >> ury;
+    cout << "creating rectangle object..." << endl;
+
+    Rectangle *userRect = new Rectangle(llx, lly, urx, ury);
+
+    int x1, x2, x3, y1, y2, y3;
+
+    cout << endl << "Please enter the 3 coordinates for a triangle: " << endl;
+    cout << "x1: ";
+    cin >> x1;
+    cout << "y1: ";
+    cin >> y1;
+    cout << "x2: ";
+    cin >> x2;
+    cout << "y2: ";
+    cin >> y2;
+    cout << "x3: ";
+    cin >> x3;
+    cout << "y3: ";
+    cin >> y3;
+    cout << "creating triangle object..." << endl;
+
+    Triangle *userTri = new Triangle(Point(x1,y1),Point(x2,y2),Point(x3,y3));
+
+    cout << endl << endl << "Here are some statistics for the shapes you just entered: " << endl;
+    cout << "Rectangle: " << endl;
+    printAttributes(userRect);
+    cout << endl << endl << "Triangle: " << endl;
+    printAttributes(userTri);
+
 
     return 0;
 }
