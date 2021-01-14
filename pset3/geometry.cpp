@@ -2,6 +2,11 @@
 #include <iostream>
 #include <cmath>
 
+const double getDistance(const Point* a, const Point* b){
+    return (sqrt(abs(a->getX() - b->getX()) + abs(a->getY() - b->getY())));
+}
+
+
 PointArray::PointArray() {
     start = new Point[0];
     length = 0;
@@ -103,4 +108,16 @@ double Rectangle::area() const {
     int length = points.getAt(1)->getY() - points.getAt(0)->getY();
     int width = points.getAt(2)->getX() - points.getAt(1)->getX();
     return std::abs((double)length * width);
+}
+
+Triangle::Triangle(const Point &a, const Point &b, const Point &c) : Polygon(updateConstructorPoints(a, b, c), 3) {};
+
+double Triangle::area() const {
+    double a = getDistance(points.getAt(0), points.getAt(1));
+    double b = getDistance(points.getAt(1), points.getAt(2));
+    double c = getDistance(points.getAt(2), points.getAt(0));
+    double s = (a + b + b) /2;
+
+    return sqrt(s*(s-a)*(s-b)*(s-c));
+
 }
