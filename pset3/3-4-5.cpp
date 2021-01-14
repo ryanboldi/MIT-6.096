@@ -44,11 +44,12 @@ int main(){
 
     Triangle *userTri = new Triangle(Point(x1,y1),Point(x2,y2),Point(x3,y3));
 
-    cout << endl << endl << "Here are some statistics for the shapes you just entered: " << endl;
+    cout << endl << endl << "Here are some statistics for the shapes you just entered: " << endl << endl;
     cout << "Rectangle: " << endl;
     printAttributes(userRect);
     cout << endl << endl << "Triangle: " << endl;
     printAttributes(userTri);
+    cout << endl;
 
 
     return 0;
