@@ -1,0 +1,29 @@
+// 2 Catch that bug. -> no compiler allowed
+
+2.1
+If the point is a const as defined in line 20, then we cannot call non const functions on it like void doubleVal();
+
+
+2.2
+In this case, the member function is defined as being constant, when it is infact changing the underlying class.
+Therefore, it is not a read only function as the const keyword led the compiler to believe.
+
+
+2.3
+The main function cannot access p.x as they are private variables. Instead the main function should call the public getX function like so: cout << p.getX() ...
+
+
+2.4
+I think that the issue here is that the definition for setX isn't actually in the Point class, instead, there is only a prototype for it. 
+To fix this, I would replace line 10 with what is written in line 13. We don't need a prototype for this as it isnt a static function.
+So, I would then delete what is in line 13.
+
+
+2.5
+Deleting an array would only delete its first point -> need to use delete[]
+
+2.6
+Every call "new" has to have a corresponding delete afterwards.
+
+
+
