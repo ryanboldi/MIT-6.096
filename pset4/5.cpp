@@ -3,11 +3,9 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <stdexcept>
 
 using namespace std;
-
-
-
 
 class Graph{
 private:
@@ -17,7 +15,7 @@ private:
 public:
     Graph(const vector<int> &starts, const vector<int> &ends){
         if (starts.size() != ends.size()){
-            cerr << "Start and end vecs are not the same length!" << endl;
+            throw invalid_argument(" Graph argument vectors must be the same length ");
         } else {
             map<int, vector<int>>::iterator it;
             for (int i = 0; i < starts.size(); i++){
@@ -35,6 +33,26 @@ public:
         }
     }
 
+    int numOutgoing(const int nodeID) const {
+        map<int, vector<int>>::const_iterator it;
+        it = adjacency.find(nodeID);
+        if (it != adjacency.end()){
+            //found the key
+            return adjacency.at(it->first).size();
+        } else {
+            //not found
+            return 0;
+        }
+    }
+
+    const vector<int> &adjacent(const int nodeID) const {
+        map<int, vector<int>>::const_iterator it;
+        it = adjacency.find(nodeID);
+        if (it != adjacency.end()){
+            //found the key
+            return adjacency.at(it->first);
+        }
+    }
 };
 
 
@@ -62,11 +80,9 @@ ostream& operator<<(ostream &output, const Graph &g){
 }
 
 
-
-
 int main(){
-    vector<int> test = {1, 2, 3, 4, 5, 2, 6, 7, 10, 10, 10};
-    vector<int> test2 = {4, 1, 2, 3, 3, 6, 7, 7, 8, 9, 10};
+    vector<int> test = {1, 6, 3, 4, 3, 6};
+    vector<int> test2 = {4, 1, 2, 3, 3, 4};
 
     Graph nice(test, test2);
 
