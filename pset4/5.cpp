@@ -16,18 +16,22 @@ private:
     map<int, vector<int>> adjacency;
 public:
     Graph(const vector<int> &starts, const vector<int> &ends){
-        map<int, vector<int>>::iterator it;
-        for (int i = 0; i < starts.size(); i++){
-            //check if there is already a key with this start node
-            it = adjacency.find(starts[i]);
-            if (it != adjacency.end()){
-                //add it to the correct vec
-                adjacency.at(it->first).push_back(ends[i]);
-            } else {
-                // add a new elt
-                adjacency.insert(it, pair<int, vector<int>>(starts[i], {ends[i]}));
+        if (starts.size() != ends.size()){
+            cerr << "Start and end vecs are not the same length!" << endl;
+        } else {
+            map<int, vector<int>>::iterator it;
+            for (int i = 0; i < starts.size(); i++){
+                //check if there is already a key with this start node
+                it = adjacency.find(starts[i]);
+                if (it != adjacency.end()){
+                    //add it to the correct vec
+                    adjacency.at(it->first).push_back(ends[i]);
+                } else {
+                    // add a new elt
+                    adjacency.insert(it, pair<int, vector<int>>(starts[i], {ends[i]}));
+                }
+                //cout << adjacency;
             }
-            //cout << adjacency;
         }
     }
 
@@ -61,8 +65,8 @@ ostream& operator<<(ostream &output, const Graph &g){
 
 
 int main(){
-    vector<int> test = {1,2,3,4,5,2};
-    vector<int> test2 = {4,1,2,3,3,6};
+    vector<int> test = {1, 2, 3, 4, 5, 2, 6, 7, 10, 10, 10};
+    vector<int> test2 = {4, 1, 2, 3, 3, 6, 7, 7, 8, 9, 10};
 
     Graph nice(test, test2);
 
