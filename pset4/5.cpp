@@ -22,7 +22,7 @@ public:
             it = adjacency.find(starts[i]);
             if (it != adjacency.end()){
                 //add it to the correct vec
-                cout << "adding to preexisiting key";
+                adjacency.at(it->first).push_back(ends[i]);
             } else {
                 // add a new elt
                 adjacency.insert(it, pair<int, vector<int>>(starts[i], {ends[i]}));
@@ -61,8 +61,8 @@ ostream& operator<<(ostream &output, const Graph &g){
 
 
 int main(){
-    vector<int> test = {1,2,3,4,5};
-    vector<int> test2 = {4,1,2,3,3};
+    vector<int> test = {1,2,3,4,5,2};
+    vector<int> test2 = {4,1,2,3,3,6};
 
     Graph nice(test, test2);
 
