@@ -41,18 +41,30 @@ void Pile::shuffle(){
 
 
 ostream &operator<<(ostream &o, const Pile &p){
-    for (unsigned i = 0; i < p.cards.size(); i++){
-        o << p.cards.at(i) << " ";
+    if (!(p.cards.size() == 0)){
+        for (unsigned i = 0; i < p.cards.size(); i++){
+            o << p.cards.at(i) << " ";
+        }
+    } else {
+        o << "[   ]"; //empty pile
     }
     return o;
 }
 
 ostream &operator<<(ostream &o, const TrashPile &p){
-    o << p.getTop();
+    if (p.cards.size() != 0){
+        o << p.getTop();
+    } else {
+        o << "[   ]";
+    }
     return o;
 }
 
 ostream &operator<<(ostream &o, const FeedPile &p){
-    o << "[X]";
+    if (p.cards.size() != 0){
+        o << "[ X ]";
+    } else {
+        o << "[   ]";
+    }
     return o;
 }
