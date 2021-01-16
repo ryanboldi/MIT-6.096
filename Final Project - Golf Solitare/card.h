@@ -12,6 +12,9 @@ private:
     //override the print functionality for the card
     friend ostream &operator<<(ostream &o, const Card &c);
 
+    //gets the distance to another card. 1 = 1 value apart (ALWAYS RETURNS THE LOWER OF THE TWO)
+    friend const int getDist(const Card m, const Card o);
+
     //value of the card as a char - 'A', '2', ..... , '9', '0', 'J', 'Q', 'K'.
     char value; //10 is known as 0 for the sake of maintaining one char
     //the suit of the card as a char - 'S', 'D', 'C', 'H'.
@@ -28,9 +31,9 @@ public:
     // A is 0, 2 is 1, ...... , K is 12;
     Card(const int vInt, const int sInt);
 
-
     const char getSuit() const {return suit;}
     const char getValue() const {return value;}
+    const int getIntValue() const;
 };
 
 

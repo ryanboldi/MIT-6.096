@@ -24,14 +24,39 @@ Card::Card(){
     int randSuit = rand() % 4;
     int randVal = rand() % 13;
 
-    cout << "Rand: " << randVal << randSuit;
+    //cout << "Rand: " << randVal << randSuit;
     value = VALUES[randVal];
     suit = SUITS[randSuit];
 }
 
 // this just tells the compiler what to do if I ask to cout << a card.
 ostream &operator<<(ostream &o, const Card &c){
-    o << c.value << c.suit;
+    o << c.getIntValue() << c.suit;
     return o;
 }
 
+//gets the distance to another card. 1 = card value apart (ALWAYS RETURNS THE LOWER OF THE TWO)
+const int getDist(const Card m, const Card o) {
+    //this - other
+    return 0;
+}
+
+//returns the integer value of a card
+const int Card::getIntValue() const {
+switch (value){
+    case 'A':
+        return 0;
+    case '0':
+        return 10;
+    case 'J':
+        return 11;
+    case 'Q':
+        return 12;
+    case 'K':
+        return 13;
+    default:
+        //return the value as an int;
+        return value-'0';
+    return -1;
+    }
+}

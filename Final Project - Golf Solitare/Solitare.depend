@@ -8,14 +8,14 @@
 1610767469 c:\repos\mit-6.096\final project - solitare\card.h
 	<iostream>
 
-1610774921 source:c:\repos\mit-6.096\final project - golf solitare\card.cpp
+1610776377 source:c:\repos\mit-6.096\final project - golf solitare\card.cpp
 	"card.h"
 	<cstdlib>
 	<ctime>
 
-1610769698 c:\repos\mit-6.096\final project - golf solitare\card.h
+1610776186 c:\repos\mit-6.096\final project - golf solitare\card.h
 	<iostream>
 
-1610774862 source:c:\repos\mit-6.096\final project - golf solitare\main.cpp
+1610776352 source:c:\repos\mit-6.096\final project - golf solitare\main.cpp
 	"card.h"
 

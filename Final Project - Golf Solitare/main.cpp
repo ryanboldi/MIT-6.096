@@ -11,10 +11,11 @@ using namespace std;
 int main()
 {
     cout << "Welcome to GOLF SOLITAIRE" << endl << endl;
-    Card a;
+    Card a('0', 'S');
 
     cout << endl;
 
-    cout << a;
+    cout << a << endl;
+    cout << a.getIntValue();
     return 0;
 }
