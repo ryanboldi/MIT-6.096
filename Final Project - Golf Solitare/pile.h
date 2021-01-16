@@ -14,13 +14,13 @@ private:
 
 protected:
     vector<Card> cards;
-    int length = 0;
 
 public:
     //default constructor
     Pile(){};
 
     void addCard(const Card &c);
+    const int getLength() const {return cards.size();};
     Card getTop() const;
     void removeTop();
 };
@@ -34,7 +34,10 @@ class TrashPile : public Pile{
 };
 
 
-
+//same as a normal pile but the user cannot see what is on top
+class FeedPile : public Pile{
+    friend ostream &operator<<(ostream &o, const FeedPile &p);
+};
 
 
 

@@ -30,3 +30,6 @@ ostream &operator<<(ostream &o, const TrashPile &p){
     return o;
 }
 
+ostream &operator<<(ostream &o, const FeedPile &p){
+    o << "[X]";
+}
