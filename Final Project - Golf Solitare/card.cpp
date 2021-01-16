@@ -31,15 +31,26 @@ Card::Card(){
 
 // this just tells the compiler what to do if I ask to cout << a card.
 ostream &operator<<(ostream &o, const Card &c){
-    o << c.getIntValue() << c.suit;
+    if (c.value != '0'){
+        o << c.value << c.suit;
+    } else {
+        o << "10" << c.suit;
+    }
     return o;
 }
 
 //gets the distance to another card. 1 = card value apart (ALWAYS RETURNS THE LOWER OF THE TWO)
 const int getDist(const Card m, const Card o) {
-    //this - other
-    return 0;
-}
+    int dist1 = m.getIntValue() - o.getIntValue();
+    int dist2 = o.getIntValue() - m.getIntValue();
+
+    //check which of these is the negative one, and then add 14 to it.
+    if (dist1 < 0) {dist1 += 14;}
+    else if (dist2 < 0){dist2 += 14;}
+
+    //check which of these is now smaller
+    return ((dist1 < dist2) ? dist1 : dist2);
+    }
 
 //returns the integer value of a card
 const int Card::getIntValue() const {

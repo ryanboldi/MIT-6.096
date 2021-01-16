@@ -11,11 +11,15 @@ using namespace std;
 int main()
 {
     cout << "Welcome to GOLF SOLITAIRE" << endl << endl;
-    Card a('0', 'S');
+    Card a('K', 'S');
+    Card b('A', 'H');
 
     cout << endl;
 
     cout << a << endl;
-    cout << a.getIntValue();
+    cout << b << endl;
+
+
+    cout << getDist(a,b);
     return 0;
 }
