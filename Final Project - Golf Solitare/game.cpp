@@ -39,6 +39,7 @@ Game::showBoard(){
         //for all piles
         for (unsigned j = 0; j < piles.size(); j++){
             //print out the card
+            if (i >= piles.at(j).getCards().size()) {continue;}
             cout << piles.at(j).getCards().at(i) << "  ";
         }
         //print a newline
