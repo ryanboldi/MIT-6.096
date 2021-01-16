@@ -31,7 +31,11 @@
 		</Compiler>
 		<Unit filename="card.cpp" />
 		<Unit filename="card.h" />
+		<Unit filename="game.cpp" />
+		<Unit filename="game.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="pile.cpp" />
+		<Unit filename="pile.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
