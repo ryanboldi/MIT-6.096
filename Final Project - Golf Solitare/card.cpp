@@ -32,7 +32,7 @@ Card::Card(){
 // this just tells the compiler what to do if I ask to cout << a card.
 ostream &operator<<(ostream &o, const Card &c){
     if (c.value != '0'){
-        o << "[" << c.value << c.suit << "]";
+        o << "[ " << c.value << c.suit << "]";
     } else {
         o << "[10" << c.suit << "]";
     }
