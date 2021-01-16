@@ -9,25 +9,15 @@
 
 using namespace std;
 
-Pile makeFullDeck();
 
 int main()
 {
     cout << "Welcome to GOLF SOLITAIRE" << endl << endl;
 
-    cout << makeFullDeck() << endl;
+    Pile p = makeFullDeck();
+    p.shuffle();
+    cout << p << endl;
 
     return 0;
 }
 
-
-//returns a full Deck of cards
-Pile makeFullDeck(){
-    Pile a;
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 13; j++){
-            a.addCard(Card(j,i));
-        }
-    }
-    return a;
-}

@@ -23,6 +23,8 @@ public:
     const int getLength() const {return cards.size();};
     Card getTop() const;
     void removeTop();
+
+    void shuffle();
 };
 
 
@@ -39,6 +41,7 @@ class FeedPile : public Pile{
     friend ostream &operator<<(ostream &o, const FeedPile &p);
 };
 
+Pile makeFullDeck();
 
 
 

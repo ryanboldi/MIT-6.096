@@ -1,6 +1,7 @@
 //will include all the function definitions from pile.h
 #include "pile.h"
 #include "card.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -18,6 +19,23 @@ void Pile::removeTop() {
     cards.pop_back();
 }
 
+//returns a full Deck of cards
+Pile makeFullDeck(){
+    Pile a;
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 13; j++){
+            a.addCard(Card(j,i));
+        }
+    }
+    return a;
+}
+
+void Pile::shuffle(){
+    srand(unsigned(time(0)));
+    random_shuffle(cards.begin(), cards.end());
+}
+
+
 ostream &operator<<(ostream &o, const Pile &p){
     for (unsigned i = 0; i < p.cards.size(); i++){
         o << p.cards.at(i) << " ";
@@ -32,4 +50,5 @@ ostream &operator<<(ostream &o, const TrashPile &p){
 
 ostream &operator<<(ostream &o, const FeedPile &p){
     o << "[X]";
+    return o;
 }
