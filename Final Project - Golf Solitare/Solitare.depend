@@ -16,25 +16,26 @@
 1610778363 c:\repos\mit-6.096\final project - golf solitare\card.h
 	<iostream>
 
-1610782214 source:c:\repos\mit-6.096\final project - golf solitare\main.cpp
+1610782954 source:c:\repos\mit-6.096\final project - golf solitare\main.cpp
 	"card.h"
 	"pile.h"
+	"game.h"
 
-1610782155 c:\repos\mit-6.096\final project - golf solitare\pile.h
+1610782896 c:\repos\mit-6.096\final project - golf solitare\pile.h
 	"card.h"
 	<iostream>
 	<vector>
 
-1610782166 source:c:\repos\mit-6.096\final project - golf solitare\pile.cpp
+1610782880 source:c:\repos\mit-6.096\final project - golf solitare\pile.cpp
 	"pile.h"
 	"card.h"
 	<algorithm>
 
-1610781838 source:c:\repos\mit-6.096\final project - golf solitare\game.cpp
+1610782904 source:c:\repos\mit-6.096\final project - golf solitare\game.cpp
 	"game.h"
 	"pile.h"
 	"card.h"
 
-1610781838 c:\repos\mit-6.096\final project - golf solitare\game.h
+1610782324 c:\repos\mit-6.096\final project - golf solitare\game.h
 	"pile.h"
 

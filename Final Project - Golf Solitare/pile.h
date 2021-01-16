@@ -24,6 +24,7 @@ public:
     Card getTop() const;
     void removeTop();
 
+    vector<Card> getCards();
     void shuffle();
 };
 

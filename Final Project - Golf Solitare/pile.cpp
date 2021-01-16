@@ -19,6 +19,10 @@ void Pile::removeTop() {
     cards.pop_back();
 }
 
+vector<Card> Pile::getCards(){
+    return cards;
+}
+
 //returns a full Deck of cards
 Pile makeFullDeck(){
     Pile a;

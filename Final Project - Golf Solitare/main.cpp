@@ -6,6 +6,7 @@
 // #include <iostream> <- this is included in card.h
 #include "card.h"
 #include "pile.h"
+#include "game.h"
 
 using namespace std;
 
@@ -14,9 +15,8 @@ int main()
 {
     cout << "Welcome to GOLF SOLITAIRE" << endl << endl;
 
-    Pile p = makeFullDeck();
-    p.shuffle();
-    cout << p << endl;
+    Game g;
+    g.showBoard();
 
     return 0;
 }

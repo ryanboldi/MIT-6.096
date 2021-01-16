@@ -8,8 +8,12 @@ using namespace std;
 class Game{
 private:
     vector<Pile> piles;
+    TrashPile trash;
+    FeedPile feed;
 public:
     Game();
+
+    showBoard();
 };
 
 
