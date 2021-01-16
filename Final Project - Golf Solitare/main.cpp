@@ -10,9 +10,10 @@ using namespace std;
 
 int main()
 {
-    cout << "Welcome to GOLF SOLITAIRE" << endl;
-    Card a(1, 1);
+    cout << "Welcome to GOLF SOLITAIRE" << endl << endl;
+    Card a;
 
+    cout << endl;
 
     cout << a;
     return 0;
