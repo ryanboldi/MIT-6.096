@@ -12,9 +12,9 @@ private:
     //overload the print functionality of Pile
     friend ostream &operator<<(ostream &o, const Pile &p);
 
+protected:
     vector<Card> cards;
     int length = 0;
-
 
 public:
     //default constructor
@@ -24,5 +24,22 @@ public:
     Card getTop() const;
     void removeTop();
 };
+
+
+
+class TrashPile : public Pile{
+    //overload the print functionality of Pile
+    friend ostream &operator<<(ostream &o, const TrashPile &p);
+
+};
+
+
+
+
+
+
+
+
+
 
 #endif // PILE_H

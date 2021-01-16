@@ -24,3 +24,9 @@ ostream &operator<<(ostream &o, const Pile &p){
     }
     return o;
 }
+
+ostream &operator<<(ostream &o, const TrashPile &p){
+    o << p.getTop();
+    return o;
+}
+

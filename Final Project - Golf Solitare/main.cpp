@@ -24,9 +24,22 @@ int main()
     p.addCard(a);
     p.addCard(b);
 
-    cout << p;
+    cout << endl;
+    cout << p << endl;
+    cout << p.getTop() << endl;
+    p.removeTop();
+    cout << p << endl;
     cout << p.getTop();
 
+    cout << endl << endl;
+    TrashPile t;
+    t.addCard(a);
+    t.addCard(b);
+    cout << t << endl;
+    t.removeTop();
+    cout << t << endl;
+    t.addCard(Card('4','H'));
+    cout << t << endl;
 
     return 0;
 }
