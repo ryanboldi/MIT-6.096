@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1610767527 source:c:\repos\mit-6.096\final project - solitare\card.cpp
+	"card.h"
+
+1610767491 source:c:\repos\mit-6.096\final project - solitare\main.cpp
+	"card.h"
+
+1610767469 c:\repos\mit-6.096\final project - solitare\card.h
+	<iostream>
+
