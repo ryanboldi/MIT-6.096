@@ -5,35 +5,36 @@
 using namespace std;
 
 Game::Game(){
-//create a new deck
-Pile newDeck = makeFullDeck();
+    //create a new deck
+    Pile newDeck = makeFullDeck();
 
-//shuffle it
-newDeck.shuffle();
+    //shuffle it
+    newDeck.shuffle();
 
-//create 7 piles of 6 random cards from this deck
-for (int i = 0; i < 7; i++){
-    Pile p;
-    for (int j = 0; j < 6; j++){
-        p.addCard(newDeck.getTop());
+    //create 7 piles of 6 random cards from this deck
+    for (int i = 0; i < 7; i++){
+        Pile p;
+        for (int j = 0; j < 6; j++){
+            p.addCard(newDeck.getTop());
+            newDeck.removeTop();
+        }
+        piles.push_back(p);
+    }
+
+    // put the rest of the cards into the face down deck
+    for (; newDeck.getCards().size() > 0;){
+        feed.addCard(newDeck.getTop());
         newDeck.removeTop();
     }
-    piles.push_back(p);
-}
-
-// put the rest of the cards into the face down deck
-for (; newDeck.getCards().size() > 0;){
-    feed.addCard(newDeck.getTop());
-    newDeck.removeTop();
-}
-
-// initialize an empty Trash deck
-// ^ done
 }
 
 
 Game::showBoard(){
     //PRINT THE CARDS OUT DOWNWARDS INSTEAD OF HORIZONTALLY
+    for (unsigned j = 1; j < piles.size() + 1; j++){
+            cout << "  " << j << "    ";
+    }
+    cout << endl;
     //for all of the cards in a basic pile
     for (unsigned i = 0; i < 6; i++){
         //for all piles
@@ -45,5 +46,8 @@ Game::showBoard(){
         //print a newline
         cout << endl;
     }
+    cout << endl;
+    cout << "Current Card: " << trash << endl;
+    cout << "Pile: " << feed << endl;
 }
 
