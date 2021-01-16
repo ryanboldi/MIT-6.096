@@ -5,6 +5,7 @@
 
 // #include <iostream> <- this is included in card.h
 #include "card.h"
+#include "pile.h"
 
 using namespace std;
 
@@ -14,12 +15,18 @@ int main()
     Card a('K', 'S');
     Card b('A', 'H');
 
-    cout << endl;
-
     cout << a << endl;
     cout << b << endl;
 
+    //cout << getDist(a,b);
 
-    cout << getDist(a,b);
+    Pile p;
+    p.addCard(a);
+    p.addCard(b);
+
+    cout << p;
+    cout << p.getTop();
+
+
     return 0;
 }
