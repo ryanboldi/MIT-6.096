@@ -9,37 +9,25 @@
 
 using namespace std;
 
+Pile makeFullDeck();
+
 int main()
 {
     cout << "Welcome to GOLF SOLITAIRE" << endl << endl;
-    Card a('K', 'S');
-    Card b('A', 'H');
 
-    cout << a << endl;
-    cout << b << endl;
-
-    //cout << getDist(a,b);
-
-    Pile p;
-    p.addCard(a);
-    p.addCard(b);
-
-    cout << endl;
-    cout << p << endl;
-    cout << p.getTop() << endl;
-    p.removeTop();
-    cout << p << endl;
-    cout << p.getTop();
-
-    cout << endl << endl;
-    TrashPile t;
-    t.addCard(a);
-    t.addCard(b);
-    cout << t << endl;
-    t.removeTop();
-    cout << t << endl;
-    t.addCard(Card('4','H'));
-    cout << t << endl;
+    cout << makeFullDeck() << endl;
 
     return 0;
+}
+
+
+//returns a full Deck of cards
+Pile makeFullDeck(){
+    Pile a;
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 13; j++){
+            a.addCard(Card(j,i));
+        }
+    }
+    return a;
 }
