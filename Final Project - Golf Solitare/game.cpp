@@ -28,8 +28,8 @@ Game::Game(){
     }
 }
 
-
 Game::showBoard(){
+    cout << "Current Board: " << endl << endl;
     //PRINT THE CARDS OUT DOWNWARDS INSTEAD OF HORIZONTALLY
     for (unsigned j = 1; j < piles.size() + 1; j++){
             cout << "  " << j << "    ";
@@ -48,6 +48,20 @@ Game::showBoard(){
     }
     cout << endl;
     cout << "Current Card: " << trash << endl;
-    cout << "Pile: " << feed << endl;
+    cout << "Pile: " << feed << endl << endl;
 }
 
+Game::askUser(){
+    cout << "Make a decision: (1-8)" << endl;
+    cout << "1-7: Move top card to trash " << endl;
+    cout << "8  : Deal a new card " << endl << endl << endl << endl;
+    //make decision
+    int choice;
+    cin >> choice;
+    cout << string(50, '\n');
+}
+
+Game::dealFromFeed(){
+    trash.addCard(feed.getTop());
+    feed.removeTop();
+}

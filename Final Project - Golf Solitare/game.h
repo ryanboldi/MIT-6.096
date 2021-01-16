@@ -14,6 +14,8 @@ public:
     Game();
 
     showBoard();
+    askUser();
+    dealFromFeed();
 };
 
 

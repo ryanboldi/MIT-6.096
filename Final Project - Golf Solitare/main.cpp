@@ -17,6 +17,13 @@ int main()
 
     Game g;
     g.showBoard();
+    g.askUser();
+    g.showBoard();
+    g.askUser();
+    g.showBoard();
+    g.askUser();
+    g.dealFromFeed();
+    g.showBoard();
 
     return 0;
 }
