@@ -16,11 +16,13 @@ int main()
     cout << "Welcome to GOLF SOLITAIRE" << endl << endl;
 
     Game g;
-    g.askUser();
-    g.askUser();
-    g.askUser();
-    g.dealFromFeed();
-    g.showBoard();
+
+    Card ace('A', 'H');
+    Card two('2', 'H');
+
+    cout << getDist(ace, two);
+
+    while (true) {g.askUser();}
 
     return 0;
 }

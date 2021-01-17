@@ -82,6 +82,7 @@ Game::askUser(){
                         //make the move
                         trash.addCard(piles[choice-1].getTop());
                         piles[choice-1].removeTop();
+                        cout << "Moved card from pile " << choice << " to the trash!" << endl << endl;
                     } else {
                         cout << "Not a valid move" << endl << endl;
                         choice = 0;
@@ -103,8 +104,12 @@ Game::askUser(){
 }
 
 Game::dealFromFeed(){
-    trash.addCard(feed.getTop());
-    feed.removeTop();
+    if (feed.getLength() != 0){
+        trash.addCard(feed.getTop());
+        feed.removeTop();
+    } else {
+        //game lost
+    }
 }
 
 const bool Game::isValidMove(const int pileNum, const Card c) const {

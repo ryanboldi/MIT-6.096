@@ -8,7 +8,7 @@
 1610767469 c:\repos\mit-6.096\final project - solitare\card.h
 	<iostream>
 
-1610783444 source:c:\repos\mit-6.096\final project - golf solitare\card.cpp
+1610905414 source:c:\repos\mit-6.096\final project - golf solitare\card.cpp
 	"card.h"
 	<cstdlib>
 	<ctime>
@@ -16,7 +16,7 @@
 1610778363 c:\repos\mit-6.096\final project - golf solitare\card.h
 	<iostream>
 
-1610903032 source:c:\repos\mit-6.096\final project - golf solitare\main.cpp
+1610905281 source:c:\repos\mit-6.096\final project - golf solitare\main.cpp
 	"card.h"
 	"pile.h"
 	"game.h"
@@ -31,7 +31,7 @@
 	"card.h"
 	<algorithm>
 
-1610904040 source:c:\repos\mit-6.096\final project - golf solitare\game.cpp
+1610905231 source:c:\repos\mit-6.096\final project - golf solitare\game.cpp
 	"game.h"
 	"pile.h"
 	"card.h"

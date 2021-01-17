@@ -45,8 +45,8 @@ const int getDist(const Card m, const Card o) {
     int dist2 = o.getIntValue() - m.getIntValue();
 
     //check which of these is the negative one, and then add 14 to it.
-    if (dist1 < 0) {dist1 += 14;}
-    else if (dist2 < 0){dist2 += 14;}
+    if (dist1 < 0) {dist1 += 13;}
+    else if (dist2 < 0){dist2 += 13;}
 
     //check which of these is now smaller
     return ((dist1 < dist2) ? dist1 : dist2);
@@ -56,7 +56,7 @@ const int getDist(const Card m, const Card o) {
 const int Card::getIntValue() const {
 switch (value){
     case 'A':
-        return 0;
+        return 1;
     case '0':
         return 10;
     case 'J':
