@@ -16,6 +16,7 @@ public:
     showBoard();
     askUser();
     dealFromFeed();
+    const bool isValidMove(const int pile, const Card c) const;
 };
 
 

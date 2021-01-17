@@ -40,46 +40,79 @@ Game::showBoard(){
         //for all piles
         for (unsigned j = 0; j < piles.size(); j++){
             //print out the card
-            if (i >= piles.at(j).getCards().size()) {continue;}
-            cout << piles.at(j).getCards().at(i) << "  ";
+            if (i >= piles.at(j).getCards().size()) {cout << "[   ]  ";}
+            else {cout << piles.at(j).getCards().at(i) << "  ";}
         }
         //print a newline
         cout << endl;
     }
     cout << endl;
-    cout << "Current Card: " << trash << endl;
-    cout << "Pile: " << feed << endl << endl;
+    cout << "Trash: " << trash << endl;
+    cout << "New: " << feed << endl << endl;
 }
 
 Game::askUser(){
     int choice = 0;
 
     do{
-    showBoard();
-    cout << "Make a decision: (1-8)" << endl;
-    cout << "1-7: Move top card to trash " << endl;
-    cout << "8  : Deal a new card " << endl << endl << endl << endl;
-    //make decision
-    if(!(cin >> choice)){
-        cout << "Not a valid choice!"<< endl << endl;
-        choice = 0;
-        cin.clear();
-        cin.ignore(10000,'\n');
-    } else if (choice > 8 || choice < 1){
-        cout << "Choice not in range!" << endl << endl;
-        choice = 0;
-        cin.clear();
-        cin.ignore(10000,'\n');
-    } else {
-        if (choice == 8){
-            cout << "Dealing a new card" << endl << endl;
+        showBoard();
+        cout << "Make a decision: (1-8)" << endl;
+        cout << "1-7: Move top card to trash " << endl;
+        cout << "8  : Deal a new card " << endl << endl << endl << endl;
+        //make decision
+        if(!(cin >> choice)){
+            cout << "Not a valid choice!"<< endl << endl;
+            choice = 0;
+            cin.clear();
+            cin.ignore(10000,'\n');
+        } else if (choice > 8 || choice < 1){
+            cout << "Choice not in range!" << endl << endl;
+            choice = 0;
+            cin.clear();
+            cin.ignore(10000,'\n');
+        } else {
+            if (choice == 8){
+                cout << "Dealing a new card" << endl << endl;
+                dealFromFeed();
+            } else {
+                //choice is between 1 and 7
+                //check that the move is valid, if not, break
+                if (trash.getLength() != 0){
+                    if (isValidMove(choice-1, trash.getTop())){
+                        //make the move
+                        trash.addCard(piles[choice-1].getTop());
+                        piles[choice-1].removeTop();
+                    } else {
+                        cout << "Not a valid move" << endl << endl;
+                        choice = 0;
+                        cin.clear();
+                        cin.ignore(10000,'\n');
+                    }
+                } else {
+                    //tried to compare empty trash pile to pile
+                    cout << "No card in trash pile!" << endl << endl;
+                    choice = 0;
+                    cin.clear();
+                    cin.ignore(10000,'\n');
+                }
+
+                // if it is, make the move
+            }
         }
-        //cout << "You chose " << choice << endl << endl;
-    }
     } while (choice == 0);
 }
 
 Game::dealFromFeed(){
     trash.addCard(feed.getTop());
     feed.removeTop();
+}
+
+const bool Game::isValidMove(const int pileNum, const Card c) const {
+    Card topPileCard = piles[pileNum].getTop();
+
+    if (getDist(topPileCard, c) == 1){
+        return true;
+    }
+
+    return false;
 }
