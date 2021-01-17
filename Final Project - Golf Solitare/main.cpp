@@ -16,11 +16,8 @@ int main()
     cout << "Welcome to GOLF SOLITAIRE" << endl << endl;
 
     Game g;
-    g.showBoard();
     g.askUser();
-    g.showBoard();
     g.askUser();
-    g.showBoard();
     g.askUser();
     g.dealFromFeed();
     g.showBoard();

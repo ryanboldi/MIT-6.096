@@ -52,13 +52,31 @@ Game::showBoard(){
 }
 
 Game::askUser(){
+    int choice = 0;
+
+    do{
+    showBoard();
     cout << "Make a decision: (1-8)" << endl;
     cout << "1-7: Move top card to trash " << endl;
     cout << "8  : Deal a new card " << endl << endl << endl << endl;
     //make decision
-    int choice;
-    cin >> choice;
-    cout << string(50, '\n');
+    if(!(cin >> choice)){
+        cout << "Not a valid choice!"<< endl << endl;
+        choice = 0;
+        cin.clear();
+        cin.ignore(10000,'\n');
+    } else if (choice > 8 || choice < 1){
+        cout << "Choice not in range!" << endl << endl;
+        choice = 0;
+        cin.clear();
+        cin.ignore(10000,'\n');
+    } else {
+        if (choice == 8){
+            cout << "Dealing a new card" << endl << endl;
+        }
+        //cout << "You chose " << choice << endl << endl;
+    }
+    } while (choice == 0);
 }
 
 Game::dealFromFeed(){
