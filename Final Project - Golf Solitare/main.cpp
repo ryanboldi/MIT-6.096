@@ -24,12 +24,15 @@ int main()
 
     while (true) {
             g.askUser();
-            //cout << g.getNumRemainingMoves();
+            g.updateState();
             if (g.getState() == -1){
                 cout << "Game lost! :( " << endl;
                 //show end game report
                 g.printEndGameReport();
                 break;
+            } else if (g.getState() == 1){
+                cout << "Game won! :) " << endl;
+                g.printEndGameReport();
             }
     }
 

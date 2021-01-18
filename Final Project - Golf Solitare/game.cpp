@@ -30,7 +30,7 @@ Game::Game(){
     dealFromFeed();
 }
 
-Game::showBoard(){
+void Game::showBoard(){
     cout << "Current Board: " << endl << endl;
     //PRINT THE CARDS OUT DOWNWARDS INSTEAD OF HORIZONTALLY
     for (unsigned j = 1; j < piles.size() + 1; j++){
@@ -53,7 +53,7 @@ Game::showBoard(){
     cout << "Stack: " << feed << endl << endl;
 }
 
-Game::askUser(){
+void Game::askUser(){
     int choice = 0;
 
     do{
@@ -118,7 +118,7 @@ Game::askUser(){
     } while (choice == 0);
 }
 
-Game::dealFromFeed(){
+void Game::dealFromFeed(){
     if (feed.getLength() != 0){
         trash.addCard(feed.getTop());
         feed.removeTop();
@@ -128,11 +128,13 @@ Game::dealFromFeed(){
 }
 
 const bool Game::isValidMove(const int pileNum, const Card c) const {
-    Card topPileCard = piles[pileNum].getTop();
+    if (piles[pileNum].getLength() != 0){
+        Card topPileCard = piles[pileNum].getTop();
 
-    if (getDist(topPileCard, c) == 1){
-        return true;
-    }
+        if (getDist(topPileCard, c) == 1){
+            return true;
+        }
+    } else { return false; }
 
     return false;
 }
@@ -145,14 +147,14 @@ const int Game::getState() const {
     return state;
 }
 
-Game::printEndGameReport() const {
+void Game::printEndGameReport() const {
     if (score != 1){
         cout << "You cleared " << score << " cards from the table!" << endl;
     } else {
         cout << "You cleared 1 card from the table!" << endl;
     }
     int emptyStacks = 0;
-    for (int i = 0; i < piles.size(); i++){
+    for (unsigned i = 0; i < piles.size(); i++){
         if (piles[i].getLength() == 0){
             emptyStacks += 1;
         }
@@ -165,15 +167,30 @@ Game::printEndGameReport() const {
     cout << "Well done! Thank you for playing Golf Solitaire!" << endl;
 }
 
-Game::updateState(){
-
-
-
+void Game::updateState(){
+    //cout << "Moves" << endl;
+    if (getNumRemainingMoves() == 0){
+        if (feed.getLength() == 0){
+            state = -1;
+            //game lost :(
+        }
+    }
+    //cout << "emptyStacks" << endl;
+    int emptyStacks = 0;
+    for (unsigned i = 0; i < piles.size(); i++){
+        if (piles[i].getLength() == 0){
+            emptyStacks += 1;
+        }
+    }
+    if (emptyStacks == 7){
+        state = 1;
+        //game won!
+    }
 }
 
 const int Game::getNumRemainingMoves() const {
     int num = 0;
-    for (int i = 0 ; i < piles.size(); i++){
+    for (unsigned i = 0 ; i < piles.size(); i++){
         if (isValidMove(i, trash.getTop())){
             num += 1;
         }

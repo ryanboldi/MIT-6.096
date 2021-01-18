@@ -15,10 +15,10 @@ private:
 public:
     Game();
 
-    showBoard();
-    askUser();
-    dealFromFeed();
-    updateState();
+    void showBoard();
+    void askUser();
+    void dealFromFeed();
+    void updateState();
 
     const bool isValidMove(const int pile, const Card c) const;
 
@@ -26,7 +26,7 @@ public:
     const int getScore() const;
     const int getNumRemainingMoves() const;
 
-    printEndGameReport() const;
+    void printEndGameReport() const;
 };
 
 
