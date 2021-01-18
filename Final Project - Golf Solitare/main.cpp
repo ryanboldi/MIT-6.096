@@ -17,12 +17,21 @@ int main()
 
     Game g;
 
-    Card ace('A', 'H');
-    Card two('2', 'H');
+    //Card ace('A', 'H');
+    //Card two('2', 'H');
 
-    cout << getDist(ace, two);
+    //cout << getDist(ace, two);
 
-    while (true) {g.askUser();}
+    while (true) {
+            g.askUser();
+            //cout << g.getNumRemainingMoves();
+            if (g.getState() == -1){
+                cout << "Game lost! :( " << endl;
+                //show end game report
+                g.printEndGameReport();
+                break;
+            }
+    }
 
     return 0;
 }

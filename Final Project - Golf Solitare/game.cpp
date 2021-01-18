@@ -14,7 +14,7 @@ Game::Game(){
     //create 7 piles of 6 random cards from this deck
     for (int i = 0; i < 7; i++){
         Pile p;
-        for (int j = 0; j < 6; j++){
+        for (int j = 0; j < 5; j++){
             p.addCard(newDeck.getTop());
             newDeck.removeTop();
         }
@@ -26,6 +26,8 @@ Game::Game(){
         feed.addCard(newDeck.getTop());
         newDeck.removeTop();
     }
+
+    dealFromFeed();
 }
 
 Game::showBoard(){
@@ -36,7 +38,7 @@ Game::showBoard(){
     }
     cout << endl;
     //for all of the cards in a basic pile
-    for (unsigned i = 0; i < 6; i++){
+    for (unsigned i = 0; i < 5; i++){
         //for all piles
         for (unsigned j = 0; j < piles.size(); j++){
             //print out the card
@@ -47,8 +49,8 @@ Game::showBoard(){
         cout << endl;
     }
     cout << endl;
-    cout << "Trash: " << trash << endl;
-    cout << "New: " << feed << endl << endl;
+    cout << "Foundation: " << trash << endl;
+    cout << "Stack: " << feed << endl << endl;
 }
 
 Game::askUser(){
@@ -57,8 +59,8 @@ Game::askUser(){
     do{
         showBoard();
         cout << "Make a decision: (1-8)" << endl;
-        cout << "1-7: Move top card to trash " << endl;
-        cout << "8  : Deal a new card " << endl << endl << endl << endl;
+        cout << "1-7: Move card from pile to foundation " << endl;
+        cout << "8  : Deal a new card from stack " << endl << endl << endl << endl;
         //make decision
         if(!(cin >> choice)){
             cout << "Not a valid choice!"<< endl << endl;
@@ -72,32 +74,45 @@ Game::askUser(){
             cin.ignore(10000,'\n');
         } else {
             if (choice == 8){
-                cout << "Dealing a new card" << endl << endl;
-                dealFromFeed();
+                if(feed.getLength() != 0){
+                    cout << "Dealing a new card" << endl << endl;
+                    dealFromFeed();
+                } else {
+                    cout << "No cards in stack pile!" << endl << endl;
+                    choice = 0;
+                    cin.clear();
+                    cin.ignore(10000,'\n');
+                }
             } else {
-                //choice is between 1 and 7
-                //check that the move is valid, if not, break
-                if (trash.getLength() != 0){
-                    if (isValidMove(choice-1, trash.getTop())){
-                        //make the move
-                        trash.addCard(piles[choice-1].getTop());
-                        piles[choice-1].removeTop();
-                        cout << "Moved card from pile " << choice << " to the trash!" << endl << endl;
+                if (piles[choice-1].getLength() != 0){
+                    //choice is between 1 and 7
+                    //check that the move is valid, if not, break
+                    if (trash.getLength() != 0){
+                        if (isValidMove(choice-1, trash.getTop())){
+                            //make the move
+                            trash.addCard(piles[choice-1].getTop());
+                            piles[choice-1].removeTop();
+                            cout << "Moved card from pile " << choice << " to the foundation!" << endl << endl;
+                            score += 1;
+                        } else {
+                            cout << "Not a valid move" << endl << endl;
+                            choice = 0;
+                            cin.clear();
+                            cin.ignore(10000,'\n');
+                        }
                     } else {
-                        cout << "Not a valid move" << endl << endl;
+                        //tried to compare empty trash pile to pile
+                        cout << "No card in foundation pile!" << endl << endl;
                         choice = 0;
                         cin.clear();
                         cin.ignore(10000,'\n');
                     }
                 } else {
-                    //tried to compare empty trash pile to pile
-                    cout << "No card in trash pile!" << endl << endl;
+                    cout << "Pile " << choice << " is already empty!" << endl << endl;
                     choice = 0;
                     cin.clear();
                     cin.ignore(10000,'\n');
                 }
-
-                // if it is, make the move
             }
         }
     } while (choice == 0);
@@ -120,4 +135,48 @@ const bool Game::isValidMove(const int pileNum, const Card c) const {
     }
 
     return false;
+}
+
+const int Game::getScore() const {
+    return score;
+}
+
+const int Game::getState() const {
+    return state;
+}
+
+Game::printEndGameReport() const {
+    if (score != 1){
+        cout << "You cleared " << score << " cards from the table!" << endl;
+    } else {
+        cout << "You cleared 1 card from the table!" << endl;
+    }
+    int emptyStacks = 0;
+    for (int i = 0; i < piles.size(); i++){
+        if (piles[i].getLength() == 0){
+            emptyStacks += 1;
+        }
+    }
+     if (emptyStacks != 1){
+        cout << "You cleared " << emptyStacks << " full stacks!" << endl;
+    } else {
+        cout << "You cleared 1 full stack!" << endl;
+    }
+    cout << "Well done! Thank you for playing Golf Solitaire!" << endl;
+}
+
+Game::updateState(){
+
+
+
+}
+
+const int Game::getNumRemainingMoves() const {
+    int num = 0;
+    for (int i = 0 ; i < piles.size(); i++){
+        if (isValidMove(i, trash.getTop())){
+            num += 1;
+        }
+    }
+    return num;
 }
