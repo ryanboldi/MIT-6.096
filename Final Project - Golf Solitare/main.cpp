@@ -26,6 +26,7 @@ int main()
             g.askUser();
             g.updateState();
             if (g.getState() == -1){
+                g.showBoard();
                 cout << "Game lost! :( " << endl;
                 //show end game report
                 g.printEndGameReport();
